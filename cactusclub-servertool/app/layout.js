@@ -4,14 +4,14 @@ import  Header  from './components/Header'
 
 
 
-export default function RootLayout(Children) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <Header/>
-      <main>
-
-      </main>
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
