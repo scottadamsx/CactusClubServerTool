@@ -1,9 +1,5 @@
 export default function order() {
   return (
-    <main>
-      <p>Order page!</p>
-    </main>
+    <h1 className="text-4xl font-semibold">Order page!</h1>
   );
 }
-
-

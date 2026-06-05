@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <p>Main Page!</p>
+    <h1 className="text-4xl font-semibold">Main Page!</h1>
   );
 }
