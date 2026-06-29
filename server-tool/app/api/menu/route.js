@@ -1,8 +1,9 @@
+import { NextResponse } from "next/server";
+import clientPromise from "@/lib/mongodb";
+
 export async function GET() {
-  const menu = [
-    { id: 1, name: "Double Double", price: 2.19 },
-    { id: 2, name: "Iced Capp", price: 3.49 },
-    { id: 3, name: "Boston Cream Donut", price: 1.49 },
-  ];
-  return Response.json(menu);
+  const client = await clientPromise;
+  const db = client.db("cactus_club");
+  const items = await db.collection("menu").find({}).toArray();
+  return NextResponse.json(items);
 }
