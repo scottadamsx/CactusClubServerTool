@@ -16,7 +16,7 @@ export default function Home() {
       <h1 className="text-4xl font-semibold">Menu</h1>
       <ul className="flex flex-col gap-2">
         {menu.map((item) => (
-          <li key={item.id} className="text-lg text-foreground/90">
+          <li key={item._id.toString()} className="text-lg text-foreground/90">
             {item.name} — ${item.price}
           </li>
         ))}
