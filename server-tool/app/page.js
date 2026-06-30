@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import EditMenuItemForm from "./components/EditMenuItemForm";
+import MenuItemCard from "./components/MenuItemCard";
 
 export default function Home() {
   const [menu, setMenu] = useState([]);
@@ -31,23 +31,14 @@ export default function Home() {
       <h1 className="text-4xl font-semibold">Menu</h1>
       <ul className="flex flex-col gap-2">
         {menu.map((item) => (
-          <li key={item._id.toString()} className="flex flex-col gap-2 border rounded p-2">
-            {editingId === item._id.toString() ? (
-              <EditMenuItemForm item={item} onClose={handleEditClose} />
-            ) : (
-              <div className="flex justify-between items-center">
-                <span className="text-lg text-foreground/90">{item.name} — ${item.price}</span>
-                <div className="flex gap-2">
-                  <button onClick={() => setEditingId(item._id.toString())} className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
-                    Edit
-                  </button>
-                  <button onClick={() => handleDelete(item._id)} className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
-                    Delete
-                  </button>
-                </div>
-              </div>
-            )}
-          </li>
+          <MenuItemCard
+            key={item._id.toString()}
+            item={item}
+            isEditing={editingId === item._id.toString()}
+            onEdit={() => setEditingId(item._id.toString())}
+            onClose={handleEditClose}
+            onDelete={() => handleDelete(item._id)}
+          />
         ))}
       </ul>
     </div>
